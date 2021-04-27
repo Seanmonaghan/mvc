@@ -11,6 +11,15 @@ router.get('/', withAuth, async (req, res) => {
   }
 })
 
+router.get('/:id', withAuth, async (req, res) => {
+  try {
+    const newPost = await Blogpost.findByPk();
+    res.status(200).json(newPost);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+})
+
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Blogpost.create({
@@ -38,7 +47,26 @@ router.delete('/:id', withAuth, async (req, res) => {
       return;
     }
 
-    res.status(200).json(projectData);
+    res.status(200).json(blogpostData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    const post = await Blogpost.update(
+      {
+        title: req.body.title,
+        content: req.body.content
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      })
+
+      res.status(200).json(post);
   } catch (err) {
     res.status(500).json(err);
   }
