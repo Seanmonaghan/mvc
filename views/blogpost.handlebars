@@ -8,7 +8,14 @@
 
 
   Previous Comments: 
-  {{user.name}}
+  <div>
+    <ul>
+      {{#each comments as |comment|}}
+        <li><h3>{{this.content}}</h3></li>
+        <p>Written: {{format_date this.date_created}} by {{this.user.name}}</p>
+      {{/each}}
+    </ul>
+  </div>
 
 
   <hr>
