@@ -7,17 +7,27 @@ header, .project:not(:last-child) {
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #1b89bc;
+  color: white;
   text-decoration: none;
   font-size: 100%;
 }
 
 .no-button:hover {
-  color: #065b83;
+  color: white;
   text-decoration: underline;
 }
 
 
 body {
-  background-color: silver;
+  background-color: beige;
+}
+
+header {
+  background-image: url(../assets/banner.jpg);
+  height: 300px;
+  align-content:center;
+}
+
+header a {
+  color: white;
 }
