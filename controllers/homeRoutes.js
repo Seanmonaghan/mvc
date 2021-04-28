@@ -49,7 +49,7 @@ router.get('/blogpost/:id', async (req, res) => {
 
     const post = blogpostData.get({ plain: true });
 
-    console.log(post);
+    // console.log(post);
 
     res.render('blogpost', {
       ...post,
