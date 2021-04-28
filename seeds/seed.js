@@ -13,25 +13,19 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  const blogposts = await Blogpost.bulkCreate(blogpostData, {
-    individualHooks: true,
-    returning: true,
-  });
-
   for (const blogpost of blogpostData) {
     await Blogpost.create({
       ...blogpost,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
-  
+}
 
-  for (const comment of commentData) {
-    await Comment.create({
-      ...comment,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
-      post_id: blogposts[Math.floor(Math.random() * blogposts.length)].id,
-    });
-  }
+for (const comment of commentData) {
+  await Comment.create({
+    ...comment,
+    user_id: users[Math.floor(Math.random() * users.length)].id,
+    post_id: users[Math.floor(Math.random() * users.length)].id,
+  });
 }
 
   process.exit(0);
